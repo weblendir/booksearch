@@ -26,7 +26,16 @@ function App() {
 		fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchText}`)
 			.then((response) => response.json())
 			.then((data) => {
-				setBooks(data.items.map((i) => i.volumeInfo));
+				setBooks(
+					data.items.map((i) => {
+						const volumeInfo = { ...i.volumeInfo };
+						if (volumeInfo.imageLinks === undefined) {
+							volumeInfo.imageLinks = { smallThumbnail: "replacement.png" };
+						}
+						return volumeInfo;
+					})
+				);
+				// setBooks(data.items.map((i) => i.volumeInfo));
 				// console.log(books);
 				// books.map((i, ind) => console.log(i));
 			});
@@ -63,7 +72,7 @@ function App() {
 						<p>
 							<br></br>
 							<img
-								src={book.imageLinks?.smallThumbnail}
+								src={book.imageLinks.smallThumbnail}
 								alt="book descriptions"
 								className="bookimage"></img>
 							Authors :{book.authors}
