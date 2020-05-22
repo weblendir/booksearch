@@ -5,22 +5,22 @@ function App() {
 	const [books, setBooks] = useState([]);
 	const [searchText, setSearchText] = useState("");
 
-	useEffect(() => {
-		// **** feth data using asyncronious function ****
-		// async function fetchData() {
-		// 	const resp = await fetch("https://www.googleapis.com/books/v1/volumes?q=harry+potter");
-		// 	const jsonData = await resp.json();
-		// 	setBooks(jsonData.items.map((i, ind) => i.volumeInfo.title));
-		// }
-		// fetchData();
-		// fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchText}`)
-		// 	.then((response) => response.json())
-		// 	.then((data) => {
-		// 		setBooks(data.items.map((i) => i.volumeInfo));
-		// 		// console.log(books);
-		// 		// books.map((i,ind) => (console.log(i)));
-		// 	});
-	}, []);
+	// useEffect(() => {
+	// **** feth data using asyncronious function ****
+	// async function fetchData() {
+	// 	const resp = await fetch("https://www.googleapis.com/books/v1/volumes?q=harry+potter");
+	// 	const jsonData = await resp.json();
+	// 	setBooks(jsonData.items.map((i, ind) => i.volumeInfo.title));
+	// }
+	// fetchData();
+	// fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchText}`)
+	// 	.then((response) => response.json())
+	// 	.then((data) => {
+	// 		setBooks(data.items.map((i) => i.volumeInfo));
+	// 		// console.log(books);
+	// 		// books.map((i,ind) => (console.log(i)));
+	// 	});
+	// }, []);
 
 	function searchButton() {
 		fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchText}`)
@@ -44,6 +44,12 @@ function App() {
 	function handleChange(event) {
 		setSearchText(event.target.value);
 	}
+
+	function lookEnter(e) {
+		if (e.key === "Enter") {
+			searchButton();
+		}
+	}
 	return (
 		// <div className="container">
 		<div>
@@ -58,6 +64,7 @@ function App() {
 						value={searchText}
 						name="searchbook"
 						onChange={handleChange}
+						onKeyPress={lookEnter}
 					/>
 				</label>
 				<button className="button" onClick={() => searchButton()}>
@@ -66,29 +73,31 @@ function App() {
 			</div>
 			<div className="bookList">
 				{books.map((book, ind) => (
-					<div key={ind} className="bookitem">
-						<br></br>
-						<h5>Name of the book: {book.title}</h5>
-						<p>
+					<a href={book.previewLink} target="_blank">
+						<div key={ind} className="bookitem">
 							<br></br>
-							<img
-								src={book.imageLinks.smallThumbnail}
-								alt="book descriptions"
-								className="bookimage"></img>
-							Authors :{book.authors}
-							<br></br>
-							Publishers:
-							{book.publisher}
-							<br></br>
-							Publication date:
-							{book.publishedDate}
-							<br></br>
-						</p>
-						<p className="bookdescription">
-							Book description: {book.description}
-							<br></br>
-						</p>
-					</div>
+							<h5>Name of the book: {book.title}</h5>
+							<p>
+								<br></br>
+								<img
+									src={book.imageLinks.smallThumbnail}
+									alt="book descriptions"
+									className="bookimage"></img>
+								Authors :{book.authors}
+								<br></br>
+								Publishers:
+								{book.publisher}
+								<br></br>
+								Publication date:
+								{book.publishedDate}
+								<br></br>
+							</p>
+							<p className="bookdescription">
+								Book description: {book.description}
+								<br></br>
+							</p>
+						</div>
+					</a>
 				))}
 			</div>
 		</div>
