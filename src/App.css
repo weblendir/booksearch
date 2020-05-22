@@ -29,6 +29,7 @@
 }
 
 .bookList {
+	margin: 20px 20px 20px 20px;
 	padding: 50px;
 	display: block;
 	width: 100%;
@@ -52,6 +53,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: justify;
+	max-width: 350px;
 }
 .bookimage {
 	width: 20%;

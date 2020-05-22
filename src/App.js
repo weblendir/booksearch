@@ -73,31 +73,31 @@ function App() {
 			</div>
 			<div className="bookList">
 				{books.map((book, ind) => (
-					<a href={book.previewLink} target="_blank">
-						<div key={ind} className="bookitem">
-							<br></br>
+					<div key={ind} className="bookitem">
+						<br></br>
+						<a href={book.previewLink} target="_blank">
 							<h5>Name of the book: {book.title}</h5>
-							<p>
-								<br></br>
-								<img
-									src={book.imageLinks.smallThumbnail}
-									alt="book descriptions"
-									className="bookimage"></img>
-								Authors :{book.authors}
-								<br></br>
-								Publishers:
-								{book.publisher}
-								<br></br>
-								Publication date:
-								{book.publishedDate}
-								<br></br>
-							</p>
-							<p className="bookdescription">
-								Book description: {book.description}
-								<br></br>
-							</p>
-						</div>
-					</a>
+						</a>
+						<p>
+							<br></br>
+							<img
+								src={book.imageLinks.smallThumbnail}
+								alt="book descriptions"
+								className="bookimage"></img>
+							Authors :{book.authors}
+							<br></br>
+							Publishers:
+							{book.publisher}
+							<br></br>
+							Publication date:
+							{book.publishedDate}
+							<br></br>
+						</p>
+						<p className="bookdescription">
+							Book description: {book.description}
+							<br></br>
+						</p>
+					</div>
 				))}
 			</div>
 		</div>
