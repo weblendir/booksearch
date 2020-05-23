@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
 	const [books, setBooks] = useState([]);
 	const [searchText, setSearchText] = useState("");
+	const [lastBookIndex, setLastBookIndex] = useState(0);
 
 	// useEffect(() => {
 	// **** feth data using asyncronious function ****
@@ -23,7 +24,7 @@ function App() {
 	// }, []);
 
 	function searchButton() {
-		fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchText}`)
+		fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchText}&maxResults=10&startIndex=${lastBookIndex}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setBooks(
@@ -35,6 +36,7 @@ function App() {
 						return volumeInfo;
 					})
 				);
+				setLastBookIndex(lastBookIndex + 10);
 				// setBooks(data.items.map((i) => i.volumeInfo));
 				// console.log(books);
 				// books.map((i, ind) => console.log(i));
@@ -99,7 +101,13 @@ function App() {
 						</p>
 					</div>
 				))}
+				{lastBookIndex > 0 ? (
+					<button className="moreButton" onClick={() => searchButton()}>
+						See more books >
+					</button>
+				) : null}
 			</div>
+			<div className="morePart"></div>
 		</div>
 	);
 }

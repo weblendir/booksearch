@@ -72,3 +72,20 @@
 	font-weight: bold;
 	cursor: pointer;
 }
+.morePart {
+}
+.moreButton {
+	background-color: red;
+	border: none;
+	color: white;
+	padding: 10px 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-top: 100px;
+	margin-left:40%;
+	margin-right: 40%;
+	width: 20%;
+}
