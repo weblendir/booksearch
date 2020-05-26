@@ -29,9 +29,9 @@
 }
 
 .bookList {
-	margin: 20px 20px 20px 20px;
+	/* margin: 20px 20px 20px 20px;
 	padding: 50px;
-	display: block;
+	display: block; */
 	width: 100%;
 }
 
@@ -44,6 +44,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: justify;
+	margin-left: 8%;
 }
 .bookitem h5 {
 	margin: 0;
@@ -53,7 +54,10 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-align: justify;
-	max-width: 350px;
+	/* max-width: 350px; */
+	width: 350px;
+	box-sizing: border-box;
+
 }
 .bookimage {
 	width: 20%;
@@ -72,8 +76,7 @@
 	font-weight: bold;
 	cursor: pointer;
 }
-.morePart {
-}
+
 .moreButton {
 	background-color: red;
 	border: none;
@@ -85,7 +88,7 @@
 	font-weight: bold;
 	cursor: pointer;
 	margin-top: 100px;
-	margin-left:40%;
+	margin-left: 40%;
 	margin-right: 40%;
 	width: 20%;
 }

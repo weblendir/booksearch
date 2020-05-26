@@ -107,7 +107,6 @@ function App() {
 					</button>
 				) : null}
 			</div>
-			<div className="morePart"></div>
 		</div>
 	);
 }
